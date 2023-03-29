@@ -7,13 +7,13 @@ import (
 	"os"
 )
 
+func indexHandler(w http.ResponseWriter, r *http.Request) {
+	io.WriteString(w, "welcome to the long dark tea-time of the soul\n")
+}
+
 func main() {
 
-	//hello world
-	helloHandler := func(w http.ResponseWriter, req *http.Request) {
-		io.WriteString(w, "welcome to the long dark teatime of the soul\n")
-	}
-	http.HandleFunc("/hello", helloHandler)
+	http.HandleFunc("/", indexHandler)
 
 	port := os.Getenv("PORT")
 	if port == "" {
